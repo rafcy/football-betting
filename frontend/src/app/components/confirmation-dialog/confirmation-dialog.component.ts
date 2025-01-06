@@ -1,37 +1,26 @@
-import { Component, ChangeDetectionStrategy, Inject } from '@angular/core';
-import {
-    MAT_DIALOG_DATA,
-    MatDialogRef,
-    MatDialogTitle,
-    MatDialogContent,
-} from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule } from '@angular/material/dialog';
+import { NgIf } from '@angular/common';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-    selector: 'app-confirmation-dialog',
     standalone: true,
-    imports: [
-        MatDialogTitle,
-        MatDialogContent,
-        MatButtonModule,
-        MatDialogModule,
-    ],
+    selector: 'app-custom-confirmation-dialog',
+    imports: [NgIf],
     templateUrl: './confirmation-dialog.component.html',
-    styleUrl: './confirmation-dialog.component.scss',
+    styleUrls: ['./confirmation-dialog.component.scss'],
 })
-export class ConfirmationDialogComponent {
-    constructor(
-        private dialogRef: MatDialogRef<ConfirmationDialogComponent>,
-        @Inject(MAT_DIALOG_DATA)
-        public data: { selection: string; match: string }
-    ) {}
+export class CustomConfirmationDialogComponent {
+    @Input() visible: boolean = false;
+    @Input() selection: string = '';
+    @Input() match: string = '';
+
+    @Output() confirm = new EventEmitter<void>();
+    @Output() cancel = new EventEmitter<void>();
 
     onConfirm(): void {
-        this.dialogRef.close(true);
+        this.confirm.emit();
     }
 
     onCancel(): void {
-        this.dialogRef.close(false);
+        this.cancel.emit();
     }
 }

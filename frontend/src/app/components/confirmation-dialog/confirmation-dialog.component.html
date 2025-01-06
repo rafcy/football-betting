@@ -1,9 +1,16 @@
-<h1 mat-dialog-title>Confirm Your Selection</h1>
-<div mat-dialog-content>
-    <p>You are about to select: <strong>{{ data.selection }}</strong> for the match <strong>{{ data.match }}</strong>.
-    </p>
-</div>
-<div mat-dialog-actions align="end">
-    <button mat-button (click)="onCancel()">Cancel</button>
-    <button mat-raised-button cdkFocusInitial color="primary" (click)="onConfirm()">Confirm</button>
+<div class="custom-dialog-backdrop" *ngIf="visible">
+    <div class="custom-dialog-container">
+        <h1 class="dialog-title">Confirm Your Selection</h1>
+        <div class="dialog-content">
+            <p>
+                You are about to select:
+                <strong>{{ selection }}</strong> for the match
+                <strong>{{ match }}</strong>.
+            </p>
+        </div>
+        <div class="dialog-actions">
+            <button class="cancel-button" (click)="onCancel()">Cancel</button>
+            <button class="confirm-button" (click)="onConfirm()">Confirm</button>
+        </div>
+    </div>
 </div>

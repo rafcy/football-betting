@@ -3,11 +3,10 @@ import { CommonModule } from '@angular/common';
 import { ApiService } from '../../services/api.service';
 import { NgFor, NgIf } from '@angular/common';
 import { LoadingComponent } from '../../components/loading/loading.component';
-import { ConfirmationDialogComponent } from '../..//components/confirmation-dialog/confirmation-dialog.component';
-import { MatDialog } from '@angular/material/dialog';
 import { EventListComponent } from '../../components/event-list/event-list.component';
 import { PaginationComponent } from '../../components/pagination/pagination.component';
 import { ToastComponent } from '../../components/toast/toast.component';
+import { CustomConfirmationDialogComponent } from '../../components/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
     selector: 'app-events',
@@ -20,6 +19,7 @@ import { ToastComponent } from '../../components/toast/toast.component';
         LoadingComponent,
         PaginationComponent,
         ToastComponent,
+        CustomConfirmationDialogComponent,
     ],
     templateUrl: './events.component.html',
     styleUrls: ['./events.component.scss'],
@@ -34,10 +34,13 @@ export class EventsComponent {
     itemsPerPage: number = 5;
     totalPages: number = 0;
     openedConfirmationDialog: boolean = false;
+    selectedEventId: number | null = null;
     disabledEvents: Set<number> = new Set();
+    selectedOutcomeForDialog: string = '';
+    selectedMatchForDialog: string = '';
     @ViewChild('toast') toast!: ToastComponent;
 
-    constructor(private apiService: ApiService, private dialog: MatDialog) {}
+    constructor(private apiService: ApiService) {}
 
     ngOnInit(): void {
         this.fetchEvents();
@@ -94,23 +97,27 @@ export class EventsComponent {
             return;
         }
 
-        this.openedConfirmationDialog = true;
-
         const event = this.filterEventById(eventId);
-        const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
-            data: {
-                selection: selectedOutcome,
-                match: `${event.homeTeam} vs ${event.awayTeam}`,
-            },
-            panelClass: 'custom-dialog-container',
-        });
+        if (event) {
+            this.selectedOutcomeForDialog = selectedOutcome;
+            this.selectedEventId = eventId;
+            this.selectedMatchForDialog = `${event.homeTeam} vs ${event.awayTeam}`;
+            this.openedConfirmationDialog = true;
+        }
+    }
 
-        dialogRef.afterClosed().subscribe((confirmed: boolean) => {
-            if (confirmed) {
-                this.submitSelection(eventId, selectedOutcome);
-            }
-            this.openedConfirmationDialog = false;
-        });
+    onDialogConfirm(): void {
+        if (this.selectedEventId) {
+            this.submitSelection(
+                this.selectedEventId,
+                this.selectedOutcomeForDialog
+            );
+        }
+        this.openedConfirmationDialog = false;
+    }
+
+    onDialogCancel(): void {
+        this.openedConfirmationDialog = false;
     }
 
     isDisabled(eventId: number): boolean {

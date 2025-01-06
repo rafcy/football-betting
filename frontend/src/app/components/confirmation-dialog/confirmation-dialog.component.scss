@@ -1,14 +1,73 @@
-::ng-deep .custom-dialog-container {
+@import "variables";
+@import "typography";
+@import "mixins";
+
+.custom-dialog-backdrop {
     position: fixed;
-    top: 50dvh !important;
-    left: 50dvw !important;
-    transform: translate(-50%, -50%) scale(1) !important;
-    z-index: 1000 !important;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    border-radius: 8px;
-    background-color: white;
-    padding: 16px;
-    transition:
-        opacity 0.3s ease,
-        transform 0.3s ease;
+    top: 0;
+    left: 0;
+    width: 100dvw;
+    height: 100dvh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+
+    > .custom-dialog-container {
+        background: map-get($colors, white);
+        padding: 24px;
+        border-radius: 8px;
+        width: 80%;
+        max-width: 400px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        animation: fadeIn 0.3s ease;
+
+        > .dialog-title {
+            @include heading-3;
+            font-weight: bold;
+            margin-bottom: 16px;
+        }
+
+        > .dialog-content {
+            @include body-text-small;
+            margin-bottom: 24px;
+        }
+
+        .dialog-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 16px;
+
+            button {
+                padding: 8px 16px;
+                @include typography-base;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                transition: background-color 0.2s ease;
+
+                &.cancel-button {
+                    @include primary-button;
+                }
+
+                &.confirm-button {
+                    @include secondary-button;
+                    color: map-get(map-get($colors, primary), base);
+                }
+            }
+        }
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }

@@ -7,6 +7,9 @@
 </div>
 
 <app-toast #toast></app-toast>
+<app-custom-confirmation-dialog [visible]="openedConfirmationDialog" [selection]="selectedOutcomeForDialog"
+    [match]="selectedMatchForDialog" (confirm)="onDialogConfirm()"
+    (cancel)="onDialogCancel()"></app-custom-confirmation-dialog>
 
 <ng-template #eventsList>
     <app-event-list [events]="events" (selectionMade)="onSelectionMade($event)"></app-event-list>
