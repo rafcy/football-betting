@@ -1,27 +1,42 @@
-# Frontend
+# Football Betting Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.12.
+This project is the frontend for a football betting application built with Angular. It allows users to view events, betting history, and interact with APIs for football betting odds.
 
-## Development server
+## Prerequisites
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Before you begin, ensure you have the following installed:
 
-## Code scaffolding
+-   Node.js (v16 or above): Download Node.js
+-   Angular CLI: Install globally via:
+    ```
+    npm install -g @angular/cli
+    ```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Setup and Installation
 
-## Build
+1. Install Dependencies:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+    ```
+    npm install
+    ```
 
-## Running unit tests
+2. Set Environment Variables:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+    Update the src/environments/environment.ts file with your desired API settings.
 
-## Running end-to-end tests
+    Here’s the default configuration:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+    | Variable            | Descriptions                                | Default Value    |
+    | :------------------ | :------------------------------------------ | :--------------- |
+    | `production`        | flag for production or development mode     | false            |
+    | `apiUrl`            | Base URL of the backend API                 | http://localhost |
+    | `apiPort`           | Port number of the backend API              | 3000             |
+    | `limitPostsPerPage` | Number of posts or items displayed per page | 5                |
 
-## Further help
+3. Start the Development Server:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+    ```
+    ng serve
+    ```
+
+    The application will be accessible at http://localhost:4200.

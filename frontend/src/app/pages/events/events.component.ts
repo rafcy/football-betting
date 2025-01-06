@@ -7,6 +7,8 @@ import { EventListComponent } from '../../components/event-list/event-list.compo
 import { PaginationComponent } from '../../components/pagination/pagination.component';
 import { ToastComponent } from '../../components/toast/toast.component';
 import { CustomConfirmationDialogComponent } from '../../components/confirmation-dialog/confirmation-dialog.component';
+import { environment } from '../../../environments/environment';
+import { Event } from '../../../types/interfaces';
 
 @Component({
     selector: 'app-events',
@@ -25,13 +27,12 @@ import { CustomConfirmationDialogComponent } from '../../components/confirmation
     styleUrls: ['./events.component.scss'],
 })
 export class EventsComponent {
-    history: any[] = [];
-    events: any[] = [];
+    events: Event[] = [];
     loading: boolean = true;
     errorMessage: string | null = null;
     selectedOutcome: { [key: string]: string } = {};
     currentPage: number = 1;
-    itemsPerPage: number = 5;
+    itemsPerPage: number = environment.limitPostsPerPage;
     totalPages: number = 0;
     openedConfirmationDialog: boolean = false;
     selectedEventId: number | null = null;

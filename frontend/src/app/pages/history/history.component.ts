@@ -5,6 +5,7 @@ import { LoadingComponent } from '../../components/loading/loading.component';
 import { EventListComponent } from '../../components/event-list/event-list.component';
 import { PaginationComponent } from '../../components/pagination/pagination.component';
 import { ToastComponent } from '../../components/toast/toast.component';
+import { Event, HistoryEvent } from '../../../types/interfaces';
 
 @Component({
     selector: 'app-history',
@@ -20,7 +21,7 @@ import { ToastComponent } from '../../components/toast/toast.component';
     styleUrls: ['./history.component.scss'],
 })
 export class HistoryComponent implements OnInit {
-    history: any[] = [];
+    history: Event[] = [];
     loading: boolean = true;
     errorMessage: string | null = null;
     currentPage: number = 1;
@@ -76,12 +77,12 @@ export class HistoryComponent implements OnInit {
             });
     }
 
-    processHistoryData(history: any[]): {
-        events: any[];
+    processHistoryData(history: HistoryEvent[]): {
+        events: Event[];
         disabledEvents: Set<number>;
         selectedOutcome: { [key: number]: string };
     } {
-        const events: any[] = [];
+        const events: Event[] = [];
         const disabledEvents = new Set<number>();
         const selectedOutcome: { [key: number]: string } = {};
 
