@@ -1,15 +1,17 @@
-<div *ngIf="loading">
-    <app-loading message="Loading history..."></app-loading>
+<div class="history-content">
+    <div *ngIf="loading">
+        <app-loading message="Loading history..."></app-loading>
+    </div>
+
+    <div *ngIf="!loading && errorMessage; else historyList">
+        <app-loading [message]="errorMessage" [showSpinner]="false"></app-loading>
+    </div>
+
+    <ng-template #historyList>
+        <app-event-list [events]="history" [disabledEvents]="disabledEvents" [selectedOutcome]="selectedOutcome">
+        </app-event-list>
+
+        <app-pagination [currentPage]="currentPage" [totalPages]="totalPages"
+            (pageChange)="changePage($event)"></app-pagination>
+    </ng-template>
 </div>
-
-<div *ngIf="!loading && errorMessage; else historyList">
-    <app-loading [message]="errorMessage" [showSpinner]="false"></app-loading>
-</div>
-
-<ng-template #historyList>
-    <app-event-list [events]="history" [disabledEvents]="disabledEvents" [selectedOutcome]="selectedOutcome">
-    </app-event-list>
-
-    <app-pagination [currentPage]="currentPage" [totalPages]="totalPages"
-        (pageChange)="changePage($event)"></app-pagination>
-</ng-template>

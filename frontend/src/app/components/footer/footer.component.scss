@@ -1,0 +1,44 @@
+@import "variables";
+@import "typography";
+
+.app-footer {
+    background-color: map-get($colors, secondary, base);
+    color: map-get($colors, text, light);
+    padding: 16px 0px;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    bottom: 0px;
+
+    > .footer-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        gap: 16px;
+
+        > .social-icons {
+            display: flex;
+            gap: 16px;
+
+            > .social-icon {
+                font-size: 1.5rem;
+                color: map-get($colors, light-blue);
+                transition:
+                    color 0.3s ease,
+                    transform 0.2s ease;
+
+                &:hover {
+                    color: map-get($colors, primary, selected);
+                    transform: scale(1.2);
+                }
+            }
+        }
+
+        > .copyright {
+            @include typography-base;
+            font-size: 0.9rem;
+            color: map-get($colors, text, washed-gray);
+        }
+    }
+}
