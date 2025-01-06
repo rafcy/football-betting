@@ -1,0 +1,159 @@
+.events {
+	padding: 16px;
+
+	> .event-card {
+		display: flex;
+		flex-direction: column;
+		padding: 16px;
+		margin: 12px 0;
+		border: 1px solid #ddd;
+		border-radius: 8px;
+		background-color: #fff;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+		> .event-teams {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 20px;
+			font-size: 16px;
+			font-weight: bold;
+
+			> .home-team {
+				flex-basis: 40%;
+				text-align: left;
+			}
+
+			> .away-team {
+				flex-basis: 40%;
+				text-align: right;
+			}
+
+			> .vs {
+				flex: 1;
+				text-align: center;
+				font-weight: normal;
+				color: #999;
+			}
+		}
+
+		> .odds {
+			display: flex;
+			flex-direction: column;
+
+			> .odds-header {
+				display: flex;
+				padding: 12px;
+				justify-content: space-between;
+				margin-bottom: 12px;
+				font-weight: bold;
+				font-size: 14px;
+				color: #666;
+				background-color: #e3f2fd;
+			}
+
+			> .odds-buttons {
+				display: flex;
+				justify-content: space-between;
+				gap: 8px;
+
+				> .odds-button {
+					padding: 8px 12px;
+					border: 1px solid #ccc;
+					border-radius: 4px;
+					background-color: #f5f5f5;
+					font-size: 14px;
+					font-weight: bold;
+					color: #333;
+					cursor: pointer;
+					transition:
+						background-color 0.2s,
+						color 0.2s;
+					flex: 1;
+					text-align: center;
+				}
+
+				> .odds-button:hover {
+					background-color: #e0e0e0;
+				}
+
+				> .odds-button.selected {
+					background-color: #007bff;
+					color: #fff;
+					border-color: #007bff;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 640px) {
+	.event-card {
+		> .event-teams {
+			flex-direction: column;
+			text-align: center;
+
+			> .home-team,
+			> .away-team {
+				text-align: center !important;
+			}
+		}
+
+		> .odds {
+			flex-direction: row !important;
+			justify-content: space-between;
+			gap: 8px;
+
+			> .odds-header {
+				flex-direction: column;
+				width: 50%;
+			}
+
+			> .odds-buttons {
+				flex-direction: column;
+				flex: 1;
+
+				> .odds-button {
+					margin-bottom: 8px;
+				}
+			}
+		}
+	}
+}
+
+.pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 16px;
+	gap: 8px;
+}
+
+.page-button {
+	padding: 8px 12px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	background-color: #f5f5f5;
+	font-size: 14px;
+	font-weight: bold;
+	color: #333;
+	cursor: pointer;
+	transition:
+		background-color 0.2s,
+		color 0.2s;
+
+	&.active {
+		background-color: #007bff;
+		color: #fff;
+		border-color: #007bff;
+	}
+
+	&:hover:not(:disabled) {
+		background-color: #e0e0e0;
+	}
+
+	&:disabled {
+		cursor: not-allowed;
+		opacity: 0.5;
+	}
+}

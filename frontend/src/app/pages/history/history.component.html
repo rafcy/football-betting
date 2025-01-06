@@ -1,0 +1,4 @@
+<div *ngFor="let record of history" class="history-card">
+	<h3>{{ record.event.homeTeam }} vs {{ record.event.awayTeam }}</h3>
+	<p>Your Selection: {{ record.selectedOutcome }}</p>
+</div>

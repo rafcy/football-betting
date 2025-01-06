@@ -1,0 +1,9 @@
+<mat-card>
+    <mat-card-content>
+        <div class="loader-container">
+            <mat-progress-spinner *ngIf="showSpinner" color="primary" mode="indeterminate" diameter="40">
+            </mat-progress-spinner>
+            <h3>{{ message }}</h3>
+        </div>
+    </mat-card-content>
+</mat-card>

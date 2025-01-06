@@ -1,10 +1,11 @@
-# Backend (Express.js)
+# Backend (Express)
 
 ## Description
 This is the backend for the football betting app. It provides three main endpoints:
+
 - `GET /events` - Retrieve all available football events.
-- `POST /selections` - Submit a user's selection for an event.
-- `GET /history/:userId` - Retrieve a specific user's selection history.
+- `POST /selection` - Submit a selection for an event.
+- `GET /history` - Retrieve a specific user's selection history.
 
 ## Setup Instructions
 
@@ -19,17 +20,16 @@ This is the backend for the football betting app. It provides three main endpoin
 3. API Endpoints:
    - GET /events
       - Returns all available football events.
-   - POST /selections
+   - POST /selection
       - Body:
          ```
          {
-            "userId": "user123",
             "eventId": 1,
             "selectedOutcome": "HOME"
          }
          ```
-   - GET /history/:userId
-      - Example: /history/user123
+   - GET /history
+      - Example: /history
       - Returns the user's selection history.
 4. Default Port: http://localhost:3000
 
@@ -43,8 +43,14 @@ Test your backend using tools like [Postman](https://www.postman.com/) Example r
 
 2. **Submit a selection:**
 
-   ```POST http://localhost:3000/selections Body: { "userId": "user123", "eventId": 1, "selectedOutcome": "HOME" } ```
+   ```POST http://localhost:3000/selection 
+      Body:
+      {
+         "eventId": 15 ,  
+         "selectedOutcome": "HOME"
+      }
+      ```
 
 3. **Fetch user history:**
 
-   ```GET http://localhost:3000/history/user123```
+   ```GET http://localhost:3000/history```
