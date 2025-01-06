@@ -1,15 +1,17 @@
 @use "@angular/material" as mat;
 @import "variables";
 @import "mixins";
+@import "typography";
 
 body {
     margin: 0;
-    font-family: Roboto, Arial, sans-serif;
+    @include body-text;
 }
 
-// h1,
-// h2,
-// h3 {
-//     font-family: Roboto, Arial, sans-serif;
-//     color: mat.get-color-from-palette($custom-primary, 800);
-// }
+.h1 {
+    @include heading-1;
+}
+
+.h3 {
+    @include heading-3;
+}

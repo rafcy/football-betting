@@ -1,9 +1,19 @@
-@mixin event-button($bg-color, $hover-bg, $selected-bg, $text-color: #333, $selected-text-color: #fff) {
+@import "typography";
+
+@mixin event-button(
+    $bg-color,
+    $hover-bg,
+    $selected-bg,
+    $text-color: #333,
+    $selected-text-color: #fff,
+    $disabled-text-color,
+    $hover-text-color
+) {
     padding: 8px 12px;
     border: 1px solid lighten($bg-color, 30%);
     border-radius: 4px;
     background-color: $bg-color;
-    font-size: 14px;
+    @include typography-base;
     font-weight: bold;
     color: $text-color;
     cursor: pointer;
@@ -15,6 +25,7 @@
         background-color: $hover-bg;
         border-color: darken($hover-bg, 10%);
         transform: translateY(-2px);
+        color: $hover-text-color;
     }
 
     &:active:not([disabled]) {
@@ -24,44 +35,49 @@
     &:disabled {
         cursor: not-allowed;
         background-color: lighten($bg-color, 40%);
-        border-color: lighten($bg-color, 60%);
+        border-color: map-get(map-get($colors, danger), base);
         color: lighten($text-color, 30%);
         opacity: 0.6;
+        color: $disabled-text-color;
     }
 
     &.selected {
         background-color: $selected-bg;
         color: $selected-text-color;
-        border-color: darken($selected-bg, 10%);
+        border-color: darken($selected-bg, 60%);
     }
 }
 
 @mixin primary-button {
     @include event-button(
-        $bg-color: #4a90e2,
-        $hover-bg: #357abd,
-        $selected-bg: #2d6da3,
-        $text-color: #ffffff,
-        $selected-text-color: #ffffff
+        $bg-color: map-get(map-get($colors, primary), base),
+        $hover-bg: map-get(map-get($colors, primary), hover),
+        $selected-bg: map-get(map-get($colors, primary), selected),
+        $text-color: map-get(map-get($colors, text), dark),
+        $selected-text-color: map-get(map-get($colors, text), light),
+        $disabled-text-color: map-get(map-get($colors, text), disabled),
+        $hover-text-color: map-get(map-get($colors, text), hover)
     );
 }
 
 @mixin secondary-button {
     @include event-button(
-        $bg-color: #f5f5f5,
-        $hover-bg: #e8e8e8,
-        $selected-bg: #dadada,
-        $text-color: #333333,
-        $selected-text-color: #000000
+        $bg-color: map-get(map-get($colors, secondary), base),
+        $hover-bg: map-get(map-get($colors, secondary), hover),
+        $selected-bg: map-get(map-get($colors, secondary), selected),
+        $text-color: map-get(map-get($colors, text), dark),
+        $selected-text-color: map-get(map-get($colors, text), dark),
+        $disabled-text-color: map-get(map-get($colors, text), disabled),
+        $hover-text-color: map-get(map-get($colors, text), hover)
     );
 }
 
 @mixin danger-button {
     @include event-button(
-        $bg-color: #e74c3c,
-        $hover-bg: #c0392b,
-        $selected-bg: #a93226,
-        $text-color: #ffffff,
-        $selected-text-color: #ffffff
+        $bg-color: map-get(map-get($colors, danger), base),
+        $hover-bg: map-get(map-get($colors, danger), hover),
+        $selected-bg: map-get(map-get($colors, danger), selected),
+        $text-color: map-get(map-get($colors, text), light),
+        $selected-text-color: map-get(map-get($colors, text), light)
     );
 }

@@ -1,5 +1,6 @@
 @import "variables";
 @import "mixins";
+@import "typography";
 
 .events {
     padding: 16px;
@@ -9,17 +10,24 @@
         flex-direction: column;
         padding: 16px;
         margin: 12px 0;
-        border: 1px solid #ddd;
+        border: 1px solid map-get($colors, border);
         border-radius: 8px;
-        background-color: #fff;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        background-color: map-get($colors, white);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition:
+            box-shadow 0.3s ease,
+            transform 0.3s ease;
 
+        &:hover {
+            transform: translateY(-5px); /* Lift the card slightly */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Deeper shadow */
+        }
         > .event-teams {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
-            font-size: 16px;
+            @include typography-base;
             font-weight: bold;
 
             > .home-team {
@@ -36,7 +44,7 @@
                 flex: 1;
                 text-align: center;
                 font-weight: normal;
-                color: #999;
+                color: map-get(map-get($colors, text), washed-gray);
             }
         }
 
@@ -45,14 +53,14 @@
             flex-direction: column;
 
             > .odds-header {
+                @include body-text-small;
                 display: flex;
                 padding: 12px;
                 justify-content: space-between;
                 margin-bottom: 12px;
                 font-weight: bold;
-                font-size: 14px;
-                color: #666;
-                background-color: #e3f2fd;
+                color: map-get(map-get($colors, secondary), base);
+                background-color: map-get($colors, light-blue);
                 border-radius: 6px;
             }
 
@@ -62,7 +70,7 @@
                 gap: 8px;
 
                 > .odds-button {
-                    @include secondary-button;
+                    @include primary-button;
                 }
             }
         }

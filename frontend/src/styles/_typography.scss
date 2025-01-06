@@ -1,0 +1,69 @@
+$font-primary: "Roboto", sans-serif;
+$font-secondary: "Arial", sans-serif;
+
+$font-weights: (
+    light: 300,
+    regular: 400,
+    medium: 500,
+    bold: 700
+);
+
+$font-sizes: (
+    xs: 12px,
+    sm: 14px,
+    base: 16px,
+    lg: 18px,
+    xl: 20px,
+    "2xl": 24px,
+    "3xl": 30px,
+    "4xl": 36px
+);
+
+$line-heights: (
+    tight: 1.2,
+    normal: 1.5,
+    relaxed: 1.75
+);
+
+@mixin typography-base {
+    font-family: $font-primary;
+    font-weight: map-get($font-weights, regular);
+    font-size: map-get($font-sizes, base);
+    line-height: map-get($line-heights, normal);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin heading-1 {
+    @include typography-base;
+    font-size: map-get($font-sizes, "4xl");
+    font-weight: map-get($font-weights, bold);
+    line-height: map-get($line-heights, tight);
+    margin-bottom: 0.5em;
+}
+
+@mixin heading-3 {
+    @include typography-base;
+    font-size: map-get($font-sizes, "xl");
+    font-weight: map-get($font-weights, medium);
+    line-height: map-get($line-heights, tight);
+    margin-bottom: 0.5em;
+}
+
+@mixin body-text {
+    @include typography-base;
+    color: map-get(map-get($colors, text), dark);
+}
+
+@mixin body-text-small {
+    @include typography-base;
+    font-size: map-get($font-sizes, sm);
+    color: map-get(map-get($colors, text), dark);
+}
+
+@mixin caption {
+    @include typography-base;
+    font-size: map-get($font-sizes, xs);
+    color: map-get(map-get($colors, text), dark);
+    line-height: map-get($line-heights, tight);
+}
