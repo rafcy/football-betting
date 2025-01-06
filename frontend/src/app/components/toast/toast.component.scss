@@ -1,0 +1,31 @@
+.toast {
+    position: fixed;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 16px 24px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    z-index: 1000;
+    display: none;
+    opacity: 0;
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+
+    &.visible {
+        display: block;
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    &.success {
+        background-color: #4caf50;
+    }
+
+    &.error {
+        background-color: #f44336;
+    }
+}

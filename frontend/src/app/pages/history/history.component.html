@@ -1,4 +1,15 @@
-<div *ngFor="let record of history" class="history-card">
-	<h3>{{ record.event.homeTeam }} vs {{ record.event.awayTeam }}</h3>
-	<p>Your Selection: {{ record.selectedOutcome }}</p>
+<div *ngIf="loading">
+    <app-loading message="Loading history..."></app-loading>
 </div>
+
+<div *ngIf="!loading && errorMessage; else historyList">
+    <app-loading [message]="errorMessage" [showSpinner]="false"></app-loading>
+</div>
+
+<ng-template #historyList>
+    <app-event-list [events]="history" [disabledEvents]="disabledEvents" [selectedOutcome]="selectedOutcome">
+    </app-event-list>
+
+    <app-pagination [currentPage]="currentPage" [totalPages]="totalPages"
+        (pageChange)="changePage($event)"></app-pagination>
+</ng-template>

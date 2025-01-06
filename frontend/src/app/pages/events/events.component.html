@@ -6,49 +6,12 @@
     <app-loading [message]="errorMessage" [showSpinner]="false"></app-loading>
 </div>
 
-<ng-template #eventsList>
-    <div *ngIf="events.length > 0" class="events">
-        <div *ngFor="let event of events" class="event-card">
-            <div class="event-teams">
-                <span class="home-team">{{ event.homeTeam }}</span>
-                <span class="vs">vs</span>
-                <span class="away-team">{{ event.awayTeam }}</span>
-            </div>
-            <div class="odds">
-                <div class="odds-header">
-                    <span>Home</span>
-                    <span>Draw</span>
-                    <span>Away</span>
-                </div>
-                <div class="odds-buttons">
-                    <button class="odds-button" [ngClass]="{ selected: selectedOutcome[event.id] === 'HOME' }"
-                        (click)="submitSelection(event.id, 'HOME')">
-                        {{ event.odds.HOME }}
-                    </button>
-                    <button class="odds-button" [ngClass]="{ selected: selectedOutcome[event.id] === 'DRAW' }"
-                        (click)="submitSelection(event.id, 'DRAW')">
-                        {{ event.odds.DRAW }}
-                    </button>
-                    <button class="odds-button" [ngClass]="{ selected: selectedOutcome[event.id] === 'AWAY' }"
-                        (click)="submitSelection(event.id, 'AWAY')">
-                        {{ event.odds.AWAY }}
-                    </button>
-                </div>
-            </div>
-        </div>
+<app-toast #toast></app-toast>
 
-        <div class="pagination">
-            <button class="page-button" [disabled]="currentPage === 1" (click)="changePage(currentPage - 1)">
-                Previous
-            </button>
-            <button *ngFor="let page of [].constructor(totalPages); let i = index" class="page-button"
-                [ngClass]="{ active: currentPage === i + 1 }" (click)="changePage(i + 1)">
-                {{ i + 1 }}
-            </button>
-            <button class="page-button" [disabled]="currentPage === totalPages" (click)="changePage(currentPage + 1)">
-                Next
-            </button>
-        </div>
-    </div>
+<ng-template #eventsList>
+    <app-event-list [events]="events" (selectionMade)="onSelectionMade($event)"></app-event-list>
+
+    <app-pagination [currentPage]="currentPage" [totalPages]="totalPages"
+        (pageChange)="changePage($event)"></app-pagination>
 
 </ng-template>

@@ -5,13 +5,18 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @Component({
-	selector: 'app-loading',
-	standalone: true,
-	imports: [CommonModule, MatCardModule,  MatProgressSpinnerModule, MatProgressBarModule],
-	templateUrl: './loading.component.html',
-	styleUrl: './loading.component.scss'
+    selector: 'app-loading',
+    standalone: true,
+    imports: [
+        CommonModule,
+        MatCardModule,
+        MatProgressSpinnerModule,
+        MatProgressBarModule,
+    ],
+    templateUrl: './loading.component.html',
+    styleUrl: './loading.component.scss',
 })
 export class LoadingComponent {
-	@Input() message: string = 'Loading events...';
-  @Input() showSpinner: boolean = true;
+    @Input() message: string = 'Loading events...';
+    @Input() showSpinner: boolean = true;
 }

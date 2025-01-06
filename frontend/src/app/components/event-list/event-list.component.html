@@ -1,0 +1,30 @@
+<div *ngIf="events.length > 0" class="events">
+    <div *ngFor="let event of events" class="event-card">
+        <div class="event-teams">
+            <span class="home-team">{{ event.homeTeam }}</span>
+            <span class="vs">vs</span>
+            <span class="away-team">{{ event.awayTeam }}</span>
+        </div>
+        <div class="odds">
+            <div class="odds-header">
+                <span>Home</span>
+                <span>Draw</span>
+                <span>Away</span>
+            </div>
+            <div class="odds-buttons">
+                <button class="odds-button" [ngClass]="{ selected: selectedOutcome[event.id] === 'HOME' }"
+                    [disabled]="isDisabled(event.id)" (click)="onSelection(event.id, 'HOME')">
+                    {{ event?.odds?.HOME }}
+                </button>
+                <button class="odds-button" [ngClass]="{ selected: selectedOutcome[event.id] === 'DRAW' }"
+                    [disabled]="isDisabled(event.id)" (click)="onSelection(event.id, 'DRAW')">
+                    {{ event?.odds?.DRAW }}
+                </button>
+                <button class="odds-button" [ngClass]="{ selected: selectedOutcome[event.id] === 'AWAY' }"
+                    [disabled]="isDisabled(event.id)" (click)="onSelection(event.id, 'AWAY')">
+                    {{ event?.odds?.AWAY }}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

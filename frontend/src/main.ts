@@ -8,9 +8,9 @@ import { AppComponent } from './app/app.component';
 import { routes } from './app/app.routes';
 
 bootstrapApplication(AppComponent, {
-	providers: [
-		provideRouter(routes),
-		provideHttpClient(),
-		importProvidersFrom(BrowserAnimationsModule)
-	]
+    providers: [
+        provideRouter(routes),
+        provideHttpClient(),
+        importProvidersFrom(BrowserAnimationsModule),
+    ],
 }).catch((err) => console.error(err));

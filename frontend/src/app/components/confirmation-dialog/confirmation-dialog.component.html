@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Confirm Your Selection</h1>
+<div mat-dialog-content>
+    <p>You are about to select: <strong>{{ data.selection }}</strong> for the match <strong>{{ data.match }}</strong>.
+    </p>
+</div>
+<div mat-dialog-actions align="end">
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button mat-raised-button cdkFocusInitial color="primary" (click)="onConfirm()">Confirm</button>
+</div>

@@ -1,36 +1,32 @@
 @use "@angular/material" as mat;
 
-// Define palettes
 $custom-primary: mat.define-palette(mat.$indigo-palette);
 $custom-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
 $custom-warn: mat.define-palette(mat.$red-palette);
 
-// Create a custom light theme
 $custom-theme: mat.define-light-theme(
-	(
-		color: (
-			primary: $custom-primary,
-			accent: $custom-accent,
-			warn: $custom-warn
-		),
-		typography: mat.define-typography-config()
-	)
+    (
+        color: (
+            primary: $custom-primary,
+            accent: $custom-accent,
+            warn: $custom-warn
+        ),
+        typography: mat.define-typography-config()
+    )
 );
 
-// Apply the theme to Material components
 @include mat.all-component-themes($custom-theme);
 
-// Global body styles
 body {
-	margin: 0;
-	font-family: Roboto, Arial, sans-serif;
-	background-color: mat.get-color-from-palette($custom-primary, 50); // Light primary color
-	color: mat.get-color-from-palette($custom-primary, 900); // Dark text color
+    margin: 0;
+    font-family: Roboto, Arial, sans-serif;
+    background-color: mat.get-color-from-palette($custom-primary, 50);
+    color: mat.get-color-from-palette($custom-primary, 900);
 }
 
 h1,
 h2,
 h3 {
-	font-family: Roboto, Arial, sans-serif;
-	color: mat.get-color-from-palette($custom-primary, 800);
+    font-family: Roboto, Arial, sans-serif;
+    color: mat.get-color-from-palette($custom-primary, 800);
 }
