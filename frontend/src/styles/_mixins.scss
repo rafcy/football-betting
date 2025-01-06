@@ -1,0 +1,67 @@
+@mixin event-button($bg-color, $hover-bg, $selected-bg, $text-color: #333, $selected-text-color: #fff) {
+    padding: 8px 12px;
+    border: 1px solid lighten($bg-color, 30%);
+    border-radius: 4px;
+    background-color: $bg-color;
+    font-size: 14px;
+    font-weight: bold;
+    color: $text-color;
+    cursor: pointer;
+    flex: 1;
+    text-align: center;
+    transition: all 0.3s ease;
+
+    &:hover:not([disabled]) {
+        background-color: $hover-bg;
+        border-color: darken($hover-bg, 10%);
+        transform: translateY(-2px);
+    }
+
+    &:active:not([disabled]) {
+        transform: translateY(1px) scale(0.98);
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        background-color: lighten($bg-color, 40%);
+        border-color: lighten($bg-color, 60%);
+        color: lighten($text-color, 30%);
+        opacity: 0.6;
+    }
+
+    &.selected {
+        background-color: $selected-bg;
+        color: $selected-text-color;
+        border-color: darken($selected-bg, 10%);
+    }
+}
+
+@mixin primary-button {
+    @include event-button(
+        $bg-color: #4a90e2,
+        $hover-bg: #357abd,
+        $selected-bg: #2d6da3,
+        $text-color: #ffffff,
+        $selected-text-color: #ffffff
+    );
+}
+
+@mixin secondary-button {
+    @include event-button(
+        $bg-color: #f5f5f5,
+        $hover-bg: #e8e8e8,
+        $selected-bg: #dadada,
+        $text-color: #333333,
+        $selected-text-color: #000000
+    );
+}
+
+@mixin danger-button {
+    @include event-button(
+        $bg-color: #e74c3c,
+        $hover-bg: #c0392b,
+        $selected-bg: #a93226,
+        $text-color: #ffffff,
+        $selected-text-color: #ffffff
+    );
+}

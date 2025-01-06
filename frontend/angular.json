@@ -29,7 +29,13 @@
                                 "input": "public"
                             }
                         ],
-                        "styles": ["src/styles.scss"],
+                        "stylePreprocessorOptions": {
+                            "includePaths": ["src/styles"]
+                        },
+                        "styles": [
+                            "src/styles/styles.scss",
+                            "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
+                        ],
                         "scripts": []
                     },
                     "configurations": {
@@ -90,7 +96,7 @@
                             }
                         ],
                         "styles": [
-                            "src/styles.scss",
+                            "src/styles/styles.scss",
                             "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
                         ],
                         "scripts": []

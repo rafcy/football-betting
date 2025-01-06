@@ -63,7 +63,7 @@ export class HistoryComponent implements OnInit {
                 },
                 error: (err) => {
                     this.loading = false;
-                    if (err.message && err.message.includes('404')) {
+                    if (err?.message && err?.message.includes('404')) {
                         this.errorMessage = 'No history is found.';
                     } else {
                         this.errorMessage =

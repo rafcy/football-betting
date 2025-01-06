@@ -102,8 +102,6 @@ export class EventsComponent {
                 selection: selectedOutcome,
                 match: `${event.homeTeam} vs ${event.awayTeam}`,
             },
-            position: { top: '-50%', left: '50%' },
-            width: '400px',
             panelClass: 'custom-dialog-container',
         });
 

@@ -1,3 +1,6 @@
+@import "variables";
+@import "mixins";
+
 .events {
     padding: 16px;
 
@@ -59,33 +62,7 @@
                 gap: 8px;
 
                 > .odds-button {
-                    padding: 8px 12px;
-                    border: 1px solid #ccc;
-                    border-radius: 4px;
-                    background-color: #f5f5f5;
-                    font-size: 14px;
-                    font-weight: bold;
-                    color: #333;
-                    cursor: pointer;
-                    transition:
-                        background-color 0.2s,
-                        color 0.2s;
-                    flex: 1;
-                    text-align: center;
-
-                    &:hover:not([disabled]) {
-                        background-color: #3fa0e0;
-                    }
-
-                    &:disabled {
-                        cursor: not-allowed;
-                    }
-                }
-
-                > .odds-button.selected {
-                    background-color: #007bff;
-                    color: #fff;
-                    border-color: #007bff;
+                    @include secondary-button;
                 }
             }
         }

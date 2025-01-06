@@ -1,11 +1,14 @@
 ::ng-deep .custom-dialog-container {
     position: fixed;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
+    top: 50dvh !important;
+    left: 50dvw !important;
+    transform: translate(-50%, -50%) scale(1) !important;
     z-index: 1000 !important;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     border-radius: 8px;
     background-color: white;
     padding: 16px;
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
 }
