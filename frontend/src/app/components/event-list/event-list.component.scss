@@ -4,6 +4,9 @@
 
 .events {
     padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 
     > .event-card {
         display: flex;
@@ -17,6 +20,7 @@
         transition:
             box-shadow 0.3s ease,
             transform 0.3s ease;
+        gap: 12px;
 
         &:hover {
             transform: translateY(-5px);
@@ -27,7 +31,7 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
-            @include typography-base;
+            @include heading-3;
             font-weight: bold;
 
             > .home-team {
@@ -61,7 +65,7 @@
                 font-weight: bold;
                 color: map-get(map-get($colors, secondary), base);
                 background-color: map-get($colors, light-blue);
-                border-radius: 6px;
+                border-radius: 8px;
             }
 
             > .odds-buttons {
@@ -71,6 +75,10 @@
 
                 > .odds-button {
                     @include primary-button;
+
+                    &.selected {
+                        border-color: map-get($colors, success);
+                    }
                 }
             }
         }

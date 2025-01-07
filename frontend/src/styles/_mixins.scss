@@ -11,7 +11,7 @@
 ) {
     padding: 8px 12px;
     border: 1px solid lighten($bg-color, 30%);
-    border-radius: 4px;
+    border-radius: 8px;
     background-color: $bg-color;
     @include typography-base;
     font-weight: bold;
@@ -20,6 +20,7 @@
     flex: 1;
     text-align: center;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 
     &:hover:not([disabled]) {
         background-color: $hover-bg;
@@ -69,15 +70,5 @@
         $selected-text-color: map-get(map-get($colors, text), dark),
         $disabled-text-color: map-get(map-get($colors, text), disabled),
         $hover-text-color: map-get(map-get($colors, text), hover)
-    );
-}
-
-@mixin danger-button {
-    @include event-button(
-        $bg-color: map-get(map-get($colors, danger), base),
-        $hover-bg: map-get(map-get($colors, danger), hover),
-        $selected-bg: map-get(map-get($colors, danger), selected),
-        $text-color: map-get(map-get($colors, text), light),
-        $selected-text-color: map-get(map-get($colors, text), light)
     );
 }

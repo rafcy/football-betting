@@ -2,9 +2,9 @@
 @import "typography";
 
 .app-footer {
-    background-color: map-get($colors, secondary, base);
+    background: linear-gradient(90deg, map-get($colors, primary, hover), map-get($colors, primary, selected));
     color: map-get($colors, text, light);
-    padding: 16px 0px;
+    padding: 26px 0px;
     text-align: center;
     width: 100%;
     position: relative;
@@ -22,7 +22,7 @@
             gap: 16px;
 
             > .social-icon {
-                font-size: 1.5rem;
+                font-size: 1.2rem;
                 color: map-get($colors, light-blue);
                 transition:
                     color 0.3s ease,
@@ -36,9 +36,9 @@
         }
 
         > .copyright {
-            @include typography-base;
-            font-size: 0.9rem;
-            color: map-get($colors, text, washed-gray);
+            @include heading-3;
+            font-weight: map-get($font-weights, medium);
+            color: map-get($colors, text, dark);
         }
     }
 }

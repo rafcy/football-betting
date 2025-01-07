@@ -11,9 +11,8 @@ mat-toolbar {
     top: 0;
     z-index: 1000;
     height: fit-content;
-    background: rgba(12, 3, 136, 0.705);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(90deg, map-get($colors, primary, hover), map-get($colors, primary, selected));
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
     > .logo-title {
         display: flex;
@@ -78,13 +77,23 @@ mat-toolbar {
                 transform 0.2s;
 
             &:hover {
-                background-color: map-get(map-get($colors, primary), selected);
+                background-color: map-get(map-get($colors, secondary), hover);
                 color: map-get($colors, white);
                 transform: scale(1.1);
             }
 
             &:active {
                 transform: scale(0.95);
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 460px) {
+    mat-toolbar {
+        > .logo-title {
+            a.title-link {
+                display: none;
             }
         }
     }

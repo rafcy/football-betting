@@ -22,9 +22,10 @@
             color 0.2s;
 
         &.active {
-            background-color: #007bff;
-            color: #fff;
-            border-color: #007bff;
+            background-color: map-get($colors, primary, hover);
+            color: map-get($colors, white);
+            border-color: map-get($colors, primary, selected);
+            font-weight: bold;
         }
 
         &:hover:not(:disabled) {
@@ -46,7 +47,7 @@
 
         > .page-button {
             padding: 6px 10px;
-            @include caption;
+            // @include caption;
             flex: 1;
             max-width: 80px;
             text-align: center;
