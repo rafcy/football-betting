@@ -31,3 +31,9 @@
         background-color: map-get($colors, error);
     }
 }
+
+@media screen and (max-width: 640px) {
+    .toast {
+        top: 80%;
+    }
+}
